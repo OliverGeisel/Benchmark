@@ -12,7 +12,7 @@ int secondmain();
 
 uint32_t dim = 0;
 const uint32_t step = 32;
-const uint32_t max = 2048;
+const uint32_t max = 2048*4;
 
 
 void set_dim() {
