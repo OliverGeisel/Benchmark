@@ -7,13 +7,16 @@
 #include <x86intrin.h>
 #include "matrix/matrixPointer.h"
 #include "matrix/matrixArray.h"
+#include <unistd.h>
 
 int secondmain();
+void collect_info(double t_start,double t_end, double gflops);
+
 
 uint32_t dim = 0;
 const uint32_t step = 32;
-const uint32_t max = 2048*4;
-
+const uint32_t max = 2048;
+FILE* results;
 
 void set_dim() {
     if (dim < 256) { dim += step; }
@@ -26,7 +29,9 @@ void set_dim() {
 
 
 int main(int argc, char **argv) {
-
+    results = fopen("Ergebnisse.txt","w+");
+    if (results==NULL)
+        printf("Fehler");
     double t_start, t_end;
     double gflops;
     dim = 0;
@@ -45,6 +50,11 @@ int main(int argc, char **argv) {
             exit(EXIT_FAILURE);
         }
 
+        
+        t_start=0.0;
+        t_end=0.0;
+        sleep(1);
+
         t_start = gtod();
 
         /* Begin matrix matrix multiply kernel */
@@ -61,14 +71,16 @@ int main(int argc, char **argv) {
         t_end = gtod();
         gflops = ((double) 2 * dim * dim * dim / 1000000000.0) / (t_end - t_start);
 
-        printf("Dim: %4d  runtime: %7.4fs  GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+        collect_info(t_start,t_end,gflops);
 
         free(A);
         free(B);
         free(C);
     }
     printf("\n");
+    fputs("\n========New Matrixtest========\n\n",results);
     secondmain();
+    fclose(results);
     return EXIT_SUCCESS;
 }
 
@@ -91,6 +103,10 @@ int secondmain() {
             printf("Allocation of matrix failed.\n");
             exit(EXIT_FAILURE);
         }
+        t_start=0.0;
+        t_end=0.0;
+        sleep(1);
+
 
         t_start = gtod();
 
@@ -107,7 +123,7 @@ int secondmain() {
         t_end = gtod();
         gflops = ((double) 2 * dim * dim * dim / 1000000000.0) / (t_end - t_start);
 
-        printf("Dim: %4d  runtime: %7.4fs  GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+        collect_info(t_start,t_end,gflops);
 
         free(A);
         free(B);
@@ -115,4 +131,11 @@ int secondmain() {
     }
     printf("\n");
     return EXIT_SUCCESS;
+}
+
+void collect_info(double t_start, double t_end, double gflops){
+    printf("Dim: %4d\truntime: %7.4fs\tGFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+    char * c= (char*)malloc(100 * sizeof(char));
+    sprintf(c,"Dim: %4d  runtime: %7.4fs  GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+    fputs(c,results);
 }
