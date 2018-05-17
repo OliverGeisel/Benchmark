@@ -15,7 +15,7 @@ void collect_info(double t_start,double t_end, double gflops);
 
 uint32_t dim = 0;
 const uint32_t step = 32;
-const uint32_t max = 2048;
+const uint32_t max = 2048*4;
 FILE* results;
 
 void set_dim() {
