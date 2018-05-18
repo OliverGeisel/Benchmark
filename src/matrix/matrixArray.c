@@ -8,7 +8,6 @@
 #include <sys/time.h>
 #include <math.h>
 #include <x86intrin.h>
-#include <stdint-gcc.h>
 #include "matrixArray.h"
 
 double **zero_mat_A(uint32_t dim) {

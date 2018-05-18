@@ -11,7 +11,6 @@
 #include <sys/time.h>
 #include <math.h>
 #include <x86intrin.h>
-#include <stdint-gcc.h>
 
 
 /** @brief Get current time stamp in seconds.
