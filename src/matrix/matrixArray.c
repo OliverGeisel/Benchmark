@@ -11,7 +11,7 @@
 #include "matrixArray.h"
 
 double **zero_mat_A(uint32_t dim) {
-    double **matrix = (double **) malloc(sizeof(double*) *dim *sizeof(double)* dim);
+    double **matrix = (double **) malloc(sizeof(double*) *dim );
     if (matrix == NULL) {
         return NULL;
     }
@@ -19,7 +19,7 @@ double **zero_mat_A(uint32_t dim) {
     for (uint32_t i = 0; i < dim; ++i) {
         matrix[i]=(double*)malloc(sizeof(double)*dim);
         for (uint32_t j = 0; j < dim; j++)
-            matrix[i][j] = (double) 0.0;
+            matrix[i][j] =  0.0;
     }
 
     return matrix;
@@ -27,7 +27,7 @@ double **zero_mat_A(uint32_t dim) {
 
 
 double **random_mat_A(uint32_t dim) {
-    double **matrix = (double **) malloc(sizeof(double*) *dim *sizeof(double)* dim);
+    double **matrix = (double **) malloc(sizeof(double*) *dim );
     if (matrix == NULL) {
         return NULL;
     }
@@ -37,7 +37,7 @@ double **random_mat_A(uint32_t dim) {
     for (uint32_t i = 0; i < dim; ++i) {
         matrix[i]=(double*)malloc(sizeof(double)*dim);
         for (uint32_t j = 0; j < dim; j++) {
-            matrix[i][j] = (double) rand();
+            matrix[i][j] = rand();
         }
     }
 
