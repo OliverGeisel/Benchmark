@@ -78,7 +78,8 @@ int main(int argc, char **argv) {
         free(C);
     }
     printf("\n");
-    fputs("\n========New Matrixtest========\n\n",results);
+    fputs("\n========New Matrixtest========\n"
+          "===========2D Array===========\n\n",results);
     secondmain();
     fclose(results);
     return EXIT_SUCCESS;
