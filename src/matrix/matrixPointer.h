@@ -5,7 +5,6 @@
 
 #ifndef BENCHMARK_MATRIXPOINTER_H
 #define BENCHMARK_MATRIXPOINTER_H
- double  gtod();
 
  double* random_mat( uint32_t n );
 

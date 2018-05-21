@@ -28,6 +28,17 @@ void set_dim() {
 }
 
 
+/** @brief Get current time stamp in seconds.
+ *
+ *  @return         Returns current time stamp in seconds.
+ */
+inline double gtod() {
+    struct timeval act_time;
+    gettimeofday(&act_time, NULL);
+
+    return (double) act_time.tv_sec + (double) act_time.tv_usec / 1000000.0;
+}
+
 int main(int argc, char **argv) {
     results = fopen("Ergebnisse.txt","w+");
     if (results==NULL)

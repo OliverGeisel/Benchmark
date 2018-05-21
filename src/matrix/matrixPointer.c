@@ -3,26 +3,12 @@
 //
 
 #include "matrixPointer.h"
-
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <time.h>
-#include <sys/time.h>
-#include <math.h>
-#include <x86intrin.h>
 
 
-/** @brief Get current time stamp in seconds.
- *
- *  @return         Returns current time stamp in seconds.
- */
- double gtod() {
-    struct timeval act_time;
-    gettimeofday(&act_time, NULL);
 
-    return (double) act_time.tv_sec + (double) act_time.tv_usec / 1000000.0;
-}
 
 
 /** @brief Generate randomized matrix.

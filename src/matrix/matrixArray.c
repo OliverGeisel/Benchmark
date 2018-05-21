@@ -1,13 +1,9 @@
 //
 // Created by Oliver on 5/3/2018.
 //
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <time.h>
-#include <sys/time.h>
-#include <math.h>
-#include <x86intrin.h>
 #include "matrixArray.h"
 
 double **zero_mat_A(uint32_t dim) {
