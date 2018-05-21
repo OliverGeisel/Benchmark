@@ -1,6 +1,7 @@
 //
 // Created by Oliver on 5/3/2018.
 //
+#include <stdint.h>
 
 #ifndef BENCHMARK_MATRIXARRAY_H
 #define BENCHMARK_MATRIXARRAY_H
