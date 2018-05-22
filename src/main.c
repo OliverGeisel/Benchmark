@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
             exit(EXIT_FAILURE);
         }
 
-        
+
         t_start=0.0;
         t_end=0.0;
         sleep(1);
@@ -146,8 +146,8 @@ int secondmain() {
 }
 
 void collect_info(double t_start, double t_end, double gflops){
-    printf("Dim: %4d\truntime: %7.4fs\tGFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+    printf("Dim: %4d runtime: %7.4fs GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
     char * c= (char*)malloc(100 * sizeof(char));
-    sprintf(c,"Dim: %4d  runtime: %7.4fs  GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
+    sprintf(c,"Dim: %4d\t  runtime: %7.4fs\t  GFLOP/s: %0.2f\n", dim, t_end - t_start, gflops);
     fputs(c,results);
 }
